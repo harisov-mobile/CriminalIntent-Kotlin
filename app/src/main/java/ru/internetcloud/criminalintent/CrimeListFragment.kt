@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -51,17 +52,26 @@ class CrimeListFragment: Fragment() {
     }
 
     // внутренний класс CrimeHolder
-    private inner class CrimeHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private inner class CrimeHolder(itemView: View): RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
         private lateinit var crime: Crime
 
         val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
         val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
 
+        init {
+            itemView.setOnClickListener(this)
+        }
+
         fun bind(crime: Crime) {
             this.crime = crime
             titleTextView.text = crime.title
             dateTextView.text = crime.date.toString()
+        }
+
+        override fun onClick(p0: View?) {
+            Toast.makeText(context, "${crime.title} pressed!", Toast.LENGTH_SHORT).show()
         }
 
     }

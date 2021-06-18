@@ -80,7 +80,7 @@ class CrimeListFragment: Fragment() {
     private inner class CrimeAdapter(var crimes: List<Crime>): RecyclerView.Adapter<CrimeHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
-            val itemView = layoutInflater.inflate(R.layout.list_item_crime, parent, false)
+            val itemView = layoutInflater.inflate(R.layout.list_item_crime2, parent, false)
             return CrimeHolder(itemView)
         }
 

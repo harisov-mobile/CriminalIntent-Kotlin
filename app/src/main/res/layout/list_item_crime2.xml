@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/colorBackgroundCrimeList">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crime_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="@dimen/crime_card_view_horizontal_margin"
+        android:layout_marginStart="@dimen/crime_card_view_horizontal_margin"
+        android:layout_marginTop="@dimen/crime_card_view_vertical_margin"
+
+        android:padding="@dimen/crime_card_view_vertical_margin"
+        card:cardElevation="@dimen/crime_card_view"
+        card:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/crime_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_margin"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/regular_text_size"
+                tools:text="crime_title" />
+
+            <TextView
+                android:id="@+id/crime_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_margin"
+                tools:text="crime_date date" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
+
+
+    <!--Примечание:-->
+    <!--    card:cardElevation - тень внизу карточки-->
+    <!--    -->

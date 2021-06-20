@@ -1,7 +1,7 @@
 package ru.internetcloud.criminalintent
 
 import android.app.Application
-import ru.internetcloud.criminalintent.model.CrimeRepository
+import ru.internetcloud.criminalintent.database.CrimeRepository
 
 class CriminalIntentApp: Application() {
 

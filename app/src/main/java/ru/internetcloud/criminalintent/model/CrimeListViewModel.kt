@@ -1,6 +1,7 @@
 package ru.internetcloud.criminalintent.model
 
 import androidx.lifecycle.ViewModel
+import ru.internetcloud.criminalintent.database.CrimeRepository
 
 class CrimeListViewModel: ViewModel() {
 

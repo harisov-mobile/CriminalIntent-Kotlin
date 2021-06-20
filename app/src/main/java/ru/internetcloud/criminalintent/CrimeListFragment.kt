@@ -1,5 +1,6 @@
 package ru.internetcloud.criminalintent
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.internetcloud.criminalintent.model.Crime
 import ru.internetcloud.criminalintent.model.CrimeListViewModel
 import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "rustam"
 private const val DATE_FORMAT = "dd MMMM yyyy, EEEE, HH : mm"
@@ -24,13 +26,20 @@ private val sdf = SimpleDateFormat(DATE_FORMAT)
 
 class CrimeListFragment: Fragment() {
 
+    // интерфейс обатного вызова
+    interface Callbacks {
+        fun onCrimeSelected(crimeId: UUID)
+    }
+
     // свойства класса: (с отложенной инициализацией)
     private val crimeListViewModel: CrimeListViewModel by lazy {
         ViewModelProviders.of(this).get(CrimeListViewModel::class.java)
     }
 
+
     private lateinit var crimeListRecyclerView: RecyclerView
     private var crimeListAdapter: CrimeAdapter? = CrimeAdapter(emptyList())
+    private var hostActivity: Callbacks? = null
 
     // статика
     companion object {
@@ -39,6 +48,11 @@ class CrimeListFragment: Fragment() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        hostActivity = context as Callbacks?
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -62,6 +76,10 @@ class CrimeListFragment: Fragment() {
         )
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        hostActivity = null
+    }
 
     // внутренний класс CrimeHolder
     private inner class CrimeHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -89,16 +107,15 @@ class CrimeListFragment: Fragment() {
         }
 
         override fun onClick(p0: View?) {
-            Toast.makeText(context, "${crime.title} pressed!", Toast.LENGTH_SHORT).show()
+            hostActivity?.onCrimeSelected(crime.id)
         }
-
     }
 
     // внутренний класс адаптер
     private inner class CrimeAdapter(var crimes: List<Crime>): RecyclerView.Adapter<CrimeHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
-            val itemView = layoutInflater.inflate(R.layout.list_item_crime3, parent, false)
+            val itemView = layoutInflater.inflate(R.layout.list_item_crime, parent, false)
             return CrimeHolder(itemView)
         }
 

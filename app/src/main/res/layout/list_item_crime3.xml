@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/colorBackgroundCrimeList">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crime_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="@dimen/crime_card_view_horizontal_margin"
+        android:layout_marginStart="@dimen/crime_card_view_horizontal_margin"
+        android:layout_marginTop="@dimen/crime_card_view_vertical_margin"
+
+        android:padding="@dimen/crime_card_view_vertical_margin"
+        card:cardCornerRadius="4dp"
+        card:cardElevation="@dimen/crime_card_view"
+        card:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="3dp"
+            tools:layout_editor_absoluteY="4dp">
+
+            <ImageView
+                android:id="@+id/crime_solved_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                card:layout_constraintBottom_toBottomOf="parent"
+                card:layout_constraintEnd_toEndOf="parent"
+                card:layout_constraintTop_toTopOf="parent"
+                card:srcCompat="@drawable/ic_solved" />
+
+            <TextView
+                android:id="@+id/crime_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/regular_text_size"
+                card:layout_constraintEnd_toStartOf="@+id/crime_solved_image_view"
+                card:layout_constraintStart_toStartOf="parent"
+                card:layout_constraintTop_toTopOf="parent"
+                tools:text="crime_title" />
+
+            <TextView
+                android:id="@+id/crime_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                card:layout_constraintBottom_toBottomOf="parent"
+                card:layout_constraintEnd_toStartOf="@+id/crime_solved_image_view"
+                card:layout_constraintStart_toStartOf="parent"
+                card:layout_constraintTop_toBottomOf="@+id/crime_title"
+                tools:text="crime_date" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
+
+
+    <!--Примечание:-->
+    <!--    card:cardElevation - тень внизу карточки-->
+    <!--    -->

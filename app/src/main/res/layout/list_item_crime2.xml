@@ -17,6 +17,7 @@
         android:layout_marginTop="@dimen/crime_card_view_vertical_margin"
 
         android:padding="@dimen/crime_card_view_vertical_margin"
+        card:cardCornerRadius="4dp"
         card:cardElevation="@dimen/crime_card_view"
         card:cardUseCompatPadding="true">
 

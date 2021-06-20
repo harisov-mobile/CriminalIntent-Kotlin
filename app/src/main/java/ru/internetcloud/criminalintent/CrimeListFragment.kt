@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.internetcloud.criminalintent.model.Crime
 import ru.internetcloud.criminalintent.model.CrimeListViewModel
 import java.text.SimpleDateFormat
@@ -38,6 +38,7 @@ class CrimeListFragment: Fragment() {
 
 
     private lateinit var crimeListRecyclerView: RecyclerView
+    private lateinit var add_fab: FloatingActionButton
     private var crimeListAdapter: CrimeAdapter? = CrimeAdapter(emptyList())
     private var hostActivity: Callbacks? = null
 
@@ -57,9 +58,14 @@ class CrimeListFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_crime_list, container, false)
+        add_fab = view.findViewById(R.id.add_fab) as FloatingActionButton
         crimeListRecyclerView = view.findViewById(R.id.crime_list_recycler_view) as RecyclerView
         crimeListRecyclerView.layoutManager = LinearLayoutManager(context)
         crimeListRecyclerView.adapter = crimeListAdapter
+
+        add_fab.setOnClickListener { //hostActivity.onAddContact();
+            onAddCrime()
+        }
 
         return view
     }
@@ -133,5 +139,11 @@ class CrimeListFragment: Fragment() {
     private fun updateUI(crimes: List<Crime>) {
         crimeListAdapter = CrimeAdapter(crimes)
         crimeListRecyclerView.adapter = crimeListAdapter
+    }
+
+    private fun onAddCrime() {
+        val crime = Crime()
+        crimeListViewModel.addCrime(crime)
+        hostActivity?.onCrimeSelected(crime.id)
     }
 }

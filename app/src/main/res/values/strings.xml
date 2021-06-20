@@ -6,4 +6,7 @@
     <string name="crime_details_label">Details</string>
     <string name="crime_solved_label">Solved</string>
 
+    <string name="crime_date_label">Date</string>
+    <string name="crime_time_label">Time</string>
+
 </resources>

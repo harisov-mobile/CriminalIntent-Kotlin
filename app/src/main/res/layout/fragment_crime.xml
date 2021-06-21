@@ -62,8 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                tools:text="15:38
-" />
+                tools:text="15:38" />
         </LinearLayout>
 
         <CheckBox
@@ -71,6 +70,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/crime_solved_label"/>
+
+        <Button
+            android:id="@+id/crime_suspect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crime_suspect_text"/>
+        <Button
+            android:id="@+id/crime_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crime_report_text"/>
+
     </LinearLayout>
 
 </FrameLayout>

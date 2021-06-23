@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.internetcloud.criminalintent">
 
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false"/>
+
     <application
 
         android:name=".CriminalIntentApp"
@@ -19,6 +22,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="ru.internetcloud.criminalintent.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files"/>
+
+        </provider>
+
     </application>
 
 </manifest>

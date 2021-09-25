@@ -133,7 +133,6 @@ class CrimeListFragment: Fragment() {
         override fun getItemCount(): Int {
             return crimes.size
         }
-
     }
 
     private fun updateUI(crimes: List<Crime>) {
